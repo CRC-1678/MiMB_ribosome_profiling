@@ -230,29 +230,6 @@ write.table(cbind(chr = paste0("chr",pcoding_Longest_Exons_CDSonly_BED[,1]),
       file = "./data/output/pcoding_Longest_Exons_CDSonly_chr.bed",
       quote = F, col.names = F, row.names = F, sep = "\t")
 
-
-##### Compare stable genes depending on counting on CDS or entire transcript #####
-
-stable_genes_EXON <- read.table("/mnt/d/data_repository/RiboSeq_SG_LS/Annotation/highest_expressed_on_complete/4_stable_genes_sorted.bed", sep = "\t", header = F)
-
-stable_genes_CDS <- read.table("/mnt/d/data_repository/RiboSeq_SG_LS/Annotation/highest_expressed_on_CDS/4_stable_genes_sorted.bed", sep = "\t", header = F)
-
-stable_genes_both <- read.table("/mnt/d/data_repository/RiboSeq_SG_LS/Annotation/4_stable_genes_both.bed", sep = "\t", header = F)
-
-setdiff(unique(stable_genes_EXON$V4),unique(stable_genes_CDS$V4))
-setdiff(unique(stable_genes_EXON$V4),unique(stable_genes_both$V4))
-setdiff(unique(stable_genes_CDS$V4),unique(stable_genes_both$V4))
-
-# There are 435 genes with stably expressed transcripts but not CDS in sample 0 uM H2O2 + Harr
-# including cathepsin L -> interesting for mTOR regulation
-
-stable_genes_EXON_25uM <- read.table("/mnt/d/data_repository/RiboSeq_SG_LS/Annotation/5_stable_genes.bed", sep = "\t", header = F)
-stable_genes_CDS_25uM <- read.table("/mnt/d/data_repository/RiboSeq_SG_LS/Annotation/highest_expressed_on_CDS/5_stable_genes.bed", sep = "\t", header = F)
-
-saveRDS(setdiff(unique(stable_genes_EXON_25uM$V4),unique(stable_genes_CDS_25uM$V4)), "../RiboSeq_SG_LS_pipeline1/data/other_input/NTEonlyReadProteins.rds")
-
-# 431 for 25 uM H2O2 + Harr
-
 ##### Workspace cleanup for saving #####
 
 # List all objects in the global environment
