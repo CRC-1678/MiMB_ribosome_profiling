@@ -6,10 +6,6 @@ frame_counts = function(count, dir = '+', utr_length = 50){
   if(length(count) > (2*utr_length)){
     # check if dividable by 3
     if( (length(count)-(2*utr_length))%%3 == 0){
-      # if negative strand --> reverse
-      if(dir == '-'){
-        count <- rev(count)
-      }
       # cut utr
       count <- count[(utr_length+1):(length(count)-utr_length)]
       # count frames
@@ -30,10 +26,6 @@ frame_counts = function(count, dir = '+', utr_length = 50){
 norm_counts_start_stop = function(count, dir = '+', utr_length = 50, cds_length = 100, normalize = TRUE) {
   # check length
   if(length(count) > (cds_length + (2 * utr_length))){
-    # if negative strand --> reverse
-    if(dir == '-'){
-      count <- rev(count)
-    }
     if(normalize){
       # get mean 
       c_mean <- mean(count[(utr_length+1):(length(count)-utr_length)], na.rm = T)
