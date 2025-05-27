@@ -48,10 +48,7 @@ anno <- t(sapply(1:nrow(anno),function(j){
     if(anno_[1,2] == min(anno[idx,2])){
       anno_[1,2] <- anno_[1,2]-50
       return(anno_)
-    } else {
-      return(anno_)
-    }
-    if(anno_[1,2] == max(anno[idx,2])){
+    } else if(anno_[1,2] == max(anno[idx,2])){
       anno_[1,3] <- anno_[1,3]+50
       return(anno_)
     } else {
