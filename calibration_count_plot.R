@@ -93,11 +93,7 @@ for_res <- foreach(i = 1:length(in_files)) %dopar% {
   # return normalized counts around start and stop
   c_list <- sapply(1:length(u_genes),function(j){
     sel <- counts[counts[,4]==u_genes[j],]
-    if (all(sel[,"V6"] == "-")) {
-    sel <- sel[order(sel[,3]-sel[,7], decreasing = T),]
-  } else {
     sel <- sel[order(sel[,2]+sel[,7]),]
-  }
     cou <- sel[,8]
     dir <- sel[1,6]
     # normalize counts
